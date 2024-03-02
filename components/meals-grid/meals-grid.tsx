@@ -8,7 +8,7 @@ type Props = {
 
 const MealsGrid: FC<Props> = ({ meals }) => {
 	return (
-		<ul>
+		<ul className="grid grid-cols-3 gap-5 p-5">
 			{meals.map((meal) => (
 				<li key={meal.id}>
 					<MealItem {...meal} />
