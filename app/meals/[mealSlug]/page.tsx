@@ -2,8 +2,13 @@ import React from "react";
 
 type Props = {};
 
-const MealDetailsPage = (props: Props) => {
-	return <h1>MealDetailsPage</h1>;
+const MealDetailsPage = () => {
+	return (
+		<>
+			<header></header>
+			<main></main>
+		</>
+	);
 };
 
 export default MealDetailsPage;
