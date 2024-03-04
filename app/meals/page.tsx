@@ -1,10 +1,25 @@
 import MealsGrid from "@/components/meals-grid/meals-grid";
 import { getMeals } from "@/lib/meals";
+import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+
+async function Meals() {
+	const meals = await getMeals();
+	return <MealsGrid meals={meals} />;
+}
+
+import iconLoading from "@/assets/loading.svg";
+function LoadingMeals() {
+	return (
+		<main className="flex w-full h-52 justify-center items-center">
+			<Image className="animate-spin h-10 w-10 mr-10" src={iconLoading} alt="icon loading" />
+			<h2 className="">Loading meals</h2>
+		</main>
+	);
+}
 
 const MealsPage = async () => {
-	const meals = await getMeals();
-
 	return (
 		<>
 			<header className="flex flex-col items-start gap-5">
@@ -16,9 +31,9 @@ const MealsPage = async () => {
 					Share your favorite recipe
 				</Link>
 			</header>
-			<main>
-				<MealsGrid meals={meals} />
-			</main>
+			<Suspense fallback={<LoadingMeals />}>
+				<Meals />
+			</Suspense>
 		</>
 	);
 };
