@@ -4,6 +4,20 @@ import React from "react";
 type Props = {};
 
 const MealSharePage = () => {
+	async function shareMeal(formData: FormData) {
+		"use server";
+
+		const meal = {
+			title: formData.get("title"),
+			image: formData.get("image"),
+			summary: formData.get("summary"),
+			instructions: formData.get("instructions"),
+			creator: formData.get("name"),
+			creator_email: formData.get("email"),
+		};
+		console.log(meal);
+	}
+
 	return (
 		<>
 			<header className="">
@@ -13,7 +27,7 @@ const MealSharePage = () => {
 				<h2>Or any other meal you feel needs sharing!</h2>
 			</header>
 			<main className="w-full">
-				<form className="items-center flex flex-col gap-5">
+				<form action={shareMeal} className="items-center flex flex-col gap-5">
 					<label htmlFor="name">
 						<p>Your name</p>
 						<input
@@ -63,7 +77,7 @@ const MealSharePage = () => {
 							required
 							className="bg-gray-900 w-96 px-4 py-2 rounded-md"></textarea>
 					</label>
-					<ImagePicker label={""} name={""} />
+					<ImagePicker label="Your image" name="image" />
 					<button type="submit">Share Meal</button>
 				</form>
 			</main>
