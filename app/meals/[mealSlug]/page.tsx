@@ -1,10 +1,14 @@
-import Meal from "@/components/meals-grid/meal";
 import { getMeal } from "@/lib/meals";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const MealDetailsPage = ({ params }: { params: { mealSlug: string } }) => {
 	const meal = getMeal(params.mealSlug);
+
+	if (!meal) {
+		notFound();
+	}
 
 	meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 
