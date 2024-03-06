@@ -13,7 +13,7 @@ import iconLoading from "@/assets/loading.svg";
 function LoadingMeals() {
 	return (
 		<main className="flex w-full h-52 justify-center items-center">
-			<Image className="animate-spin h-10 w-10 mr-10" src={iconLoading} alt="icon loading" />
+			<Image className="animate-spin size-10 mr-10" src={iconLoading} alt="icon loading" />
 			<h2 className="">Loading meals</h2>
 		</main>
 	);
