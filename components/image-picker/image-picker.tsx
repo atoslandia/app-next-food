@@ -9,7 +9,7 @@ type Props = {
 };
 
 const ImagePicker: FC<Props> = ({ label, name }) => {
-	const [pickedImage, setPickedImage] = useState<string>("");
+	const [pickedImage, setPickedImage] = useState<string>();
 
 	function imageChange(event: ChangeEvent<HTMLInputElement>) {
 		const file = event.target.files?.item(0);
