@@ -2,8 +2,6 @@ import ImagePicker from "@/components/image-picker/image-picker";
 import { shareMeal } from "@/lib/actions";
 import React from "react";
 
-type Props = {};
-
 const MealSharePage = () => {
 	return (
 		<>

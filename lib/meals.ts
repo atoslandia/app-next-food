@@ -17,7 +17,7 @@ export function getMeal(slug: string) {
 	return db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug) as Meal;
 }
 
-export async function saveMeal(meal: Meal) {
+export async function saveMeal(meal: any) {
 	const slug = slugify(meal.title, { lower: true });
 
 	const instructions = xss(meal.instructions);
@@ -35,6 +35,8 @@ export async function saveMeal(meal: Meal) {
 			}
 		});
 	}
+	meal.slug = slug;
+	meal.image = "/images/" + fileName;
 
 	db.prepare(
 		`
@@ -50,5 +52,5 @@ export async function saveMeal(meal: Meal) {
 			@slug
 		)
 		`
-	).run(meal, slug);
+	).run(meal);
 }

@@ -1,17 +1,17 @@
 "use server";
 
-import Meal from "@/components/meals-grid/meal";
+import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
 
 export async function shareMeal(formData: FormData) {
-	const meal: Meal = {
-		title: formData.get("title")?.toString() as string,
-		image: formData.get("image")?.toString() as File | undefined,
-		slug: "",
-		summary: formData.get("summary")?.toString() as string,
-		instructions: formData.get("instructions")?.toString() as string,
-		creator: formData.get("name")?.toString() as string,
-		creator_email: formData.get("email")?.toString() as string,
+	const meal = {
+		title: formData.get("title"),
+		image: formData.get("image"),
+		summary: formData.get("summary"),
+		instructions: formData.get("instructions"),
+		creator: formData.get("name"),
+		creator_email: formData.get("email"),
 	};
 	await saveMeal(meal);
+	redirect("/meals");
 }
