@@ -16,7 +16,7 @@ const MealDetailsPage = ({ params }: { params: { mealSlug: string } }) => {
 		<div className="flex w-full flex-col items-center gap-2">
 			<header className="flex w-full flex-col items-center gap-1">
 				<div className="size-96 object-cover relative">
-					<Image fill src={meal.image.name} alt={meal.title} />
+					<Image fill src={meal.image} alt={meal.title} />
 				</div>
 				<h2>{meal.title}</h2>
 				<p>

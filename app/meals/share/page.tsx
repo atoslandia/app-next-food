@@ -1,8 +1,13 @@
+"use client";
+
 import ImagePicker from "@/components/image-picker/image-picker";
-import { shareMeal } from "@/lib/actions";
-import React from "react";
+import MealsFormSubmit from "@/components/meals-grid/meals-form-submit";
+import { PrevState, shareMeal } from "@/lib/actions";
+import { useFormState } from "react-dom";
 
 const MealSharePage = () => {
+	const [state, formAction] = useFormState(shareMeal, { message: null } as PrevState);
+
 	return (
 		<>
 			<header className="">
@@ -12,7 +17,7 @@ const MealSharePage = () => {
 				<h2>Or any other meal you feel needs sharing!</h2>
 			</header>
 			<main className="w-full">
-				<form action={shareMeal} className="items-center flex flex-col gap-5">
+				<form action={formAction} className="items-center flex flex-col gap-5">
 					<label htmlFor="name">
 						<p>Your name</p>
 						<input
@@ -63,7 +68,8 @@ const MealSharePage = () => {
 							className="bg-gray-900 w-96 px-4 py-2 rounded-md"></textarea>
 					</label>
 					<ImagePicker label="Your image" name="image" />
-					<button type="submit">Share Meal</button>
+					{state.message && <p>{state.message}</p>}
+					<MealsFormSubmit />
 				</form>
 			</main>
 		</>
