@@ -1,20 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
+import Meal from "./meal";
 
-type Props = {
-	title: string;
-	slug: string;
-	image: string;
-	summary: string;
-	creator: string;
-};
-
-const MealItem: FC<Props> = ({ title, slug, image, summary, creator }) => {
+const MealItem: FC<Meal> = ({ title, slug, image, summary, creator }) => {
+	let imagePath = "" + image;
 	return (
 		<article className="flex flex-col items-center justify-between">
 			<div className="size-96 object-cover relative">
-				<Image src={image} alt={title} fill />
+				<Image src={imagePath} alt={title} fill />
 			</div>
 			<div className="flex flex-col items-start">
 				<h2>{title}</h2>

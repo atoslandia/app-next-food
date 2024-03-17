@@ -10,7 +10,7 @@ const MealsGrid: FC<Props> = ({ meals }) => {
 	return (
 		<ul className="grid grid-cols-3 gap-5 p-5">
 			{meals.map((meal) => (
-				<li key={meal.id}>
+				<li key={meal.title + meal.image.name}>
 					<MealItem {...meal} />
 				</li>
 			))}
